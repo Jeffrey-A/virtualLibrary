@@ -11,28 +11,39 @@ const Header = () =>{
 const Nav = () =>{
     return (
         <nav className="navigation-bar text-center">
+            <Button className="add-bt" text="Add a book" />
             <input type="text" placeholder="Search books" />
-            <Button />
+            <Button className="search-bt" text="Search" />
+            
         </nav>
     );
 }
 
-const Button = () =>{
+const Button = (props) =>{
     return (
-        <button className="search-bt button">Search</button>
+        <button className={props.className}>{props.text}</button>
     );
 }
 
-const Book = () =>{
+const Book = (props) =>{
     return (
         <div className="book-wrapper text-center">
             <img className="book-img" src="../img/placeholder.png"/>
-            <h3>Book Title</h3>
-            <p>Author name</p>
+            <h3>{props.bookName}</h3>
+            <p>{props.author}</p>
         </div>
     );
 }
 
+const BookContainer = () =>{
+    return (
+        <div className="book-container">
+            <Book bookName="Book 1" author="Author 1"/>
+            <Book bookName="Book 2" author="Author 2"/>
+            <Book bookName="Book 3" author="Author 3"/>
+        </div>
+    );
+}
 
 
 const App = () =>{
@@ -40,7 +51,8 @@ const App = () =>{
     <div>
         <Header />
         <Nav />
-        <Book />
+        <BookContainer />
+        
     </div>
     
     );
