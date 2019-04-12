@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Book from './Book';
 
 const close = () =>{
     document.getElementById('addBook').style.display="none";
@@ -6,7 +7,6 @@ const close = () =>{
 
 const addBook = () =>{
     //add a book component
-    alert('Hi');
 }
 
 class BookInfo extends Component{
