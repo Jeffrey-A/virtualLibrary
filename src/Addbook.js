@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Book from './Book';
+// import Book from './Book';
 
 const close = () =>{
     document.getElementById('addBook').style.display="none";
