@@ -5,12 +5,8 @@ const close = () =>{
     document.getElementById('addBook').style.display="none";
 }
 
-const getBookInfo = (info) =>{
-    //add a book component
-    alert(info.title +" "+info.author + " "+info.image);
-}
-
 class BookInfo extends Component{
+
     render(){
         return (
             <div>
@@ -25,7 +21,9 @@ class BookInfo extends Component{
                 <p>Book's image: </p>
                 <input id="imgProvide"type="text" placeholder="img url"/>
 
-                <button id="addButton" onClick={()=>getBookInfo(
+                {/* method passed from Nav*/}
+                <button id="addButton" onClick={()=> this.props.getBook( 
+                    
                     {
                         title:document.getElementById("titleProvide").value,
                         author:document.getElementById("authorProvide").value,

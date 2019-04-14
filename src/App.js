@@ -43,20 +43,35 @@ class App extends Component{
     
   }
 
-  createBooks(){
-    const allbooks = this.state.booksList.map((book, i) =>{
-    return <Book bookName={this.state.booksList[i].title} author={this.state.booksList[i].author} key={this.state.booksList[i].id} />
+  createBooks(books){
+    const allbooks = books.map((book, i) =>{
+    return <Book bookName={books[i].title} author={books[i].author} key={books[i].id} />
     });
+    console.log(books);
+    // const allbooks = [];
+    // for(var i=0; i < books.length; i+=1 ){
+    //   allbooks.push(<Book bookName={books[i].title} author={books[i].author} key={books[i].id} />);
+    // }
+
     return allbooks;
   }
   
+  getBookInfo(bookInfo){
+    // add a book component
+    bookInfo.id = this.state.booksList.length+1;
+    this.setState((state) =>({
+      booksList: state.booksList.push(bookInfo)
+    }));
+  }
 
   render(){
-    const books = this.createBooks();
+    const books = this.createBooks(this.state.booksList);
+    
     return (
       <div>
           <Header />
-          <Nav />
+          
+          <Nav getBook={this.getBookInfo}/>  {/* passing the method */}
           <div className="book-container">
             {books}
           </div>  
