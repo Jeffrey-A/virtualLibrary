@@ -14,29 +14,29 @@ class App extends Component{
       {
         title:"Book 1",
         author:"Author 1",
-        id:1
+  
       },
 
       {
         title:"Book 2",
         author:"Author 2",
-        id:2
+        
       },
 
       {
         title:"Book 3",
         author:"Author 3",
-        id:3
+        
       },
       {
         title:"Book 4",
         author:"Author 4",
-        id:4
+        
       },
       {
         title:"Book 5",
         author:"Author 5",
-        id:5
+        
       }
     ]
   };
@@ -45,6 +45,7 @@ class App extends Component{
 
   createBooks(books){
     const allbooks = books.map((book, i) =>{
+      books[i].id = i;
     return <Book bookName={books[i].title} author={books[i].author} key={books[i].id} />
     });
     console.log(books);
@@ -58,7 +59,7 @@ class App extends Component{
   
   getBookInfo(bookInfo){
     // add a book component
-    bookInfo.id = this.state.booksList.length+1;
+    
     this.setState((state) =>({
       booksList: state.booksList.push(bookInfo)
     }));
