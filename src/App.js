@@ -51,12 +51,26 @@ class App extends Component{
     
     return allbooks;
   }
+
+  getBooks(){
+    // const books =[]
+    // fecth('https://www.googleapis.com/books/v1/volumes?q=flowers')
+    //   .then(response => response.json()) // Define response type (JSON, Headers, Status codes)
+    //   .then(data = book.push(data))
+    //   console.log(books)
+  }
   
-  
+  componentDidMount(){
+    const books =[];
+    fetch('https://www.googleapis.com/books/v1/volumes?q=flowers')
+      .then(response => response.json()) // Define response type (JSON, Headers, Status codes)
+      .then(data => books.push(data))
+      console.log(books)
+  }
 
   render(){
     const books = this.createBooks(this.state.booksList);
-    
+  
     return (
       <div>
           <Header />
