@@ -48,22 +48,11 @@ class App extends Component{
       books[i].id = i;
     return <Book bookName={books[i].title} author={books[i].author} key={books[i].id} />
     });
-    console.log(books);
-    // const allbooks = [];
-    // for(var i=0; i < books.length; i+=1 ){
-    //   allbooks.push(<Book bookName={books[i].title} author={books[i].author} key={books[i].id} />);
-    // }
-
+    
     return allbooks;
   }
   
-  getBookInfo(bookInfo){
-    // add a book component
-    
-    this.setState((state) =>({
-      booksList: state.booksList.push(bookInfo)
-    }));
-  }
+  
 
   render(){
     const books = this.createBooks(this.state.booksList);
