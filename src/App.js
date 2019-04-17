@@ -63,8 +63,14 @@ class App extends Component{
       url:"https://www.googleapis.com/books/v1/volumes?q=dogs",
       dataType: "json",
       success: function(data){
-        console.log(data.items[0].volumeInfo.title);
-        console.log(data.items[0].volumeInfo.authors[0]);
+        console.log(data);
+        for(var i=0; i<data.items.length; i+=1){
+          console.log(data.items[i].volumeInfo.title);
+          console.log(data.items[i].volumeInfo.authors[0]);
+          console.log(data.items[i].description);
+          //data.items[i].imageLinks.thumbnail
+        }
+        
       },
 
       type:"GET"
