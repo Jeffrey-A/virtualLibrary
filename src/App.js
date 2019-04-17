@@ -3,6 +3,7 @@ import './App.css';
 import Header from './Header';
 import Nav from './Nav';
 import Book from './Book';
+import $ from 'jquery';
 
 
 class App extends Component{
@@ -53,19 +54,23 @@ class App extends Component{
   }
 
   getBooks(){
-    // const books =[]
-    // fecth('https://www.googleapis.com/books/v1/volumes?q=flowers')
-    //   .then(response => response.json()) // Define response type (JSON, Headers, Status codes)
-    //   .then(data = book.push(data))
-    //   console.log(books)
+    
   }
   
   componentDidMount(){
-    const books =[];
-    fetch('https://www.googleapis.com/books/v1/volumes?q=flowers')
-      .then(response => response.json()) // Define response type (JSON, Headers, Status codes)
-      .then(data => books.push(data))
-      console.log(books)
+
+    $.ajax({
+      url:"https://www.googleapis.com/books/v1/volumes?q=dogs",
+      dataType: "json",
+      success: function(data){
+        console.log(data.items[0].volumeInfo.title);
+        console.log(data.items[0].volumeInfo.authors[0]);
+      },
+
+      type:"GET"
+
+    });
+
   }
 
   render(){
