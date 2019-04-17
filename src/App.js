@@ -10,44 +10,12 @@ class App extends Component{
 
   constructor(){
     super();
-    this.state = {
-     booksList :[
-      {
-        title:"Book 1",
-        author:"Author 1",
-  
-      },
-
-      {
-        title:"Book 2",
-        author:"Author 2",
-        
-      },
-
-      {
-        title:"Book 3",
-        author:"Author 3",
-        
-      },
-      {
-        title:"Book 4",
-        author:"Author 4",
-        
-      },
-      {
-        title:"Book 5",
-        author:"Author 5",
-        
-      }
-    ]
-  };
-    
+    this.state = {booksList : []}
   }
 
   createBooks(books){
     const allbooks = books.map((book, i) =>{
-      books[i].id = i;
-    return <Book bookName={books[i].title} author={books[i].author} key={books[i].id} />
+      return <Book bookName={books[i].title} author={books[i].author}  />
     });
     
     return allbooks;
@@ -58,17 +26,19 @@ class App extends Component{
   }
   
   componentDidMount(){
-
+    const bookList =[];
     $.ajax({
       url:"https://www.googleapis.com/books/v1/volumes?q=dogs",
       dataType: "json",
       success: function(data){
         console.log(data);
         for(var i=0; i<data.items.length; i+=1){
-          console.log(data.items[i].volumeInfo.title);
-          console.log(data.items[i].volumeInfo.authors[0]);
-          console.log(data.items[i].description);
-          //data.items[i].imageLinks.thumbnail
+          bookList.push({
+            title: data.items[i].volumeInfo.title,
+            author: data.items[i].volumeInfo.authors[0],
+            description: data.items[i].volumeInfo.description,
+            img: data.items[i].volumeInfo.imageLinks.thumbnail 
+          });
         }
         
       },
@@ -76,6 +46,8 @@ class App extends Component{
       type:"GET"
 
     });
+    
+    this.setState ({booksList : bookList});
 
   }
 
