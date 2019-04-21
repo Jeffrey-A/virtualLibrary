@@ -1,2 +1,3 @@
 # virtualLibrary
-A virtual library build with react. Status: in progress...
+A virtual library in progress
+
