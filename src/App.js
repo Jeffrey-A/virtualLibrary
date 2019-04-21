@@ -10,50 +10,38 @@ class App extends Component{
 
   constructor(){
     super();
+   
     this.state = {booksList : []}
+    
   }
 
-  createBooks(books){
-    const allbooks = books.map((book, i) =>{
-      return <Book bookName={books[i].title} author={books[i].author}  />
-    });
+  createBooks(){
+    const allbooks =[];
+    for(var i =0; i<this.state.booksList.length; i++){
+      allbooks.push(<Book bookName={this.state.booksList[i].title} author={this.state.booksList[i].author} img={this.state.booksList[i].img} />);
+    }
     
     return allbooks;
   }
 
   getBooks(){
-    
-  }
-  
-  componentDidMount(){
-    const bookList =[];
-    $.ajax({
-      url:"https://www.googleapis.com/books/v1/volumes?q=dogs",
-      dataType: "json",
-      success: function(data){
-        console.log(data);
-        for(var i=0; i<data.items.length; i+=1){
-          bookList.push({
-            title: data.items[i].volumeInfo.title,
-            author: data.items[i].volumeInfo.authors[0],
-            description: data.items[i].volumeInfo.description,
-            img: data.items[i].volumeInfo.imageLinks.thumbnail 
+    let books = [];
+    $.get("https://www.googleapis.com/books/v1/volumes?q=dogs",(response)=>{
+          books = response.items.map((i)=>{
+            return {title: i.volumeInfo.title,author: i.volumeInfo.authors[0],description: i.volumeInfo.description,img: i.volumeInfo.imageLinks.thumbnail}
           });
-        }
-        
-      },
 
-      type:"GET"
-
+          this.setState({
+            booksList: books});
+          
     });
     
-    this.setState ({booksList : bookList});
-
   }
-
-  render(){
-    const books = this.createBooks(this.state.booksList);
   
+  render(){
+    this.getBooks();
+    const books = this.createBooks();
+    
     return (
       <div>
           <Header />
@@ -63,9 +51,7 @@ class App extends Component{
             {books}
           </div>  
           
-      </div>
-      
-      );
+      </div>);
   }
   
 }
