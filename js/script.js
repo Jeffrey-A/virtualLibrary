@@ -1,12 +1,8 @@
 const input = $("#input-box");
 const searchBt = $("#search");
 
-
-
-
-searchBt.on('click',()=>{
+const getBooks = ()=>{
     if(input.val() !=""){
-
         $(".books-container").empty();
 
         $.get("https://www.googleapis.com/books/v1/volumes?q="+input.val()+"+intitle:keyes&key=AIzaSyCCTinyvw6cYu4Fengg7zhPvBOUEZIuW9Q",
@@ -41,7 +37,8 @@ searchBt.on('click',()=>{
 
             
             for(var i=0; i < books.length; i++){
-                let title = $("<h3></h3>").text(books[i].title);
+                let title = $("<p></p>").text(books[i].title);
+                title.addClass("book-title")
                 let img = $("<img/>").attr("src",books[i].img);
                 let author = $("<p></p>").text(books[i].author);
 
@@ -50,15 +47,28 @@ searchBt.on('click',()=>{
                 div.append(img);
                 div.append(title);
                 div.append(author);
-                booksContainer.append(div);
+
+                let link = $("<a></a>").attr("href",books[i].link);
+                link.attr("target","_blank");
+                link.append(div);
+                booksContainer.append(link);
             }
             
 
             console.log(books);
         });
     }else{
-        alert("You must type something");
+        alert("You need to type something");
+    }
+}
+
+input.on('keypress', (e)=>{
+    if(e.keyCode=='13'){
+        getBooks();
     }
     
-});
+})
+
+
+searchBt.on('click', getBooks);
 
