@@ -1,3 +1,3 @@
 # virtualLibrary
-A virtual library in progress
+Using the Google Books Api, allows users to search for books.
 

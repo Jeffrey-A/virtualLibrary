@@ -22,7 +22,7 @@ searchBt.on('click',()=>{
 
                 if(!(items[i].volumeInfo.imageLinks)){
                     items[i].volumeInfo.imageLinks={};
-                    items[i].volumeInfo.imageLinks.thumbnail="placeholder.png";
+                    items[i].volumeInfo.imageLinks.thumbnail="../placeholder.png";
                 }
             }
 
@@ -42,7 +42,7 @@ searchBt.on('click',()=>{
             
             for(var i=0; i < books.length; i++){
                 let title = $("<h3></h3>").text(books[i].title);
-                let img = $("<img src="+books[i].img+"/>");
+                let img = $("<img/>").attr("src",books[i].img);
                 let author = $("<p></p>").text(books[i].author);
 
                 let div = $("<div></div>");
