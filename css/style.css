@@ -7,6 +7,14 @@ header{
     text-align: center;
     margin-top: 20px;
 }
+
+header h1{
+    font-family: 'Archivo Black', sans-serif;
+}
+header p{
+    font-family: 'Tinos', serif;
+    font-size: 2rem;
+}
 a:hover{
     color: black;
 }
