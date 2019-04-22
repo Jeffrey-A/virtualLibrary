@@ -1,4 +1,8 @@
+body{
+    background-image: linear-gradient(to right top, #051937, #004975, #0080a1, #00b9ab, #02ef94);
+    background-repeat: no-repeat;
 
+}
 header{
     text-align: center;
     margin-top: 20px;
@@ -12,7 +16,7 @@ a:hover{
 }
 
 .book{
-    width: 200px;
+    width: 150px;
     margin: 10px;
     border-radius: 10px;
     text-align: center;
@@ -35,8 +39,9 @@ a:hover{
 }
 .book img{
     width: 100%;
-    border-radius: 10px;
-    height: 250px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    height: 200px;
 }
 .book-title{
     font-weight: 600;

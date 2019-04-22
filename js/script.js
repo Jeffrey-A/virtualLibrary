@@ -6,7 +6,7 @@ const getBooks = ()=>{
         $(".books-container").empty();
         $("#info").empty();
 
-        $.get("https://www.googleapis.com/books/v1/volumes?q="+input.val()+"&key=AIzaSyCCTinyvw6cYu4Fengg7zhPvBOUEZIuW9Q",
+        $.get("https://www.googleapis.com/books/v1/volumes?q="+input.val()+"&maxResults=40&key=AIzaSyCCTinyvw6cYu4Fengg7zhPvBOUEZIuW9Q",
         (response)=>{
 
             const inputText = input.val();
