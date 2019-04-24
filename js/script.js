@@ -27,7 +27,7 @@ const getBooks = ()=>{
 
                     if(!(items[i].volumeInfo.imageLinks)){
                         items[i].volumeInfo.imageLinks={};
-                        items[i].volumeInfo.imageLinks.thumbnail="../placeholder.png";
+                        items[i].volumeInfo.imageLinks.thumbnail="js/placeholder.png";
                     }
                 }
                 //pushing all books to the list
