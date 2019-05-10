@@ -1,6 +1,8 @@
 const input = $("#input-box");
 const searchBt = $("#search");
 
+
+
 const getBooks = ()=>{
     if(input.val() !=""){ //if input text is not empty
         $(".books-container").empty(); //remove all books
@@ -8,7 +10,7 @@ const getBooks = ()=>{
 
         $.get("https://www.googleapis.com/books/v1/volumes?q="+input.val()+"&maxResults=40&key=AIzaSyCCTinyvw6cYu4Fengg7zhPvBOUEZIuW9Q",
         (response)=>{ //make a request to the google books API
-
+            console.log(response);
             const inputText = input.val();
             input.val("");
             if(response.totalItems <=0){ //if did not get any book 
@@ -70,7 +72,7 @@ const getBooks = ()=>{
                 }
                 
 
-                console.log(books);
+                //console.log(books);
             }
         });
             
